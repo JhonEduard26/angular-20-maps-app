@@ -1,1 +1,27 @@
-<p>fullscreen-map works!</p>
+<div #map></div>
+
+<section id="controls">
+  <h2 class="text-2xl font-bold text-black mb-2">
+    Zoom
+
+    <small class="text-gray-500 font-normal">{{
+      zoom() | number : "1.0-0"
+    }}</small>
+  </h2>
+
+  <input
+    type="range"
+    min="1"
+    max="18"
+    [value]="zoom()"
+    class="range range-primary mb-2"
+    (input)="zoom.set(range.valueAsNumber)"
+    #range
+  />
+
+  <h3 class="font-bold text-black">Coordenadas</h3>
+
+  <pre class="text-sm text-gray-500"
+    >{{ coordinates() | json }}
+  </pre>
+</section>
